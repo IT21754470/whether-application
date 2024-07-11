@@ -1,10 +1,23 @@
-import User from '../models/user.model';
+const User = require('../models/user.model');
+const getWeatherData = require('../routes/getWeatherData');
 
-
-export const createUser = async (req, res) => {
+ const createUser = async (req, res) => {
 
     try{
-        const user = new User(req.body);
+        const {email, location} = req.body;
+
+        if (!email || !location) {
+            return res.status(400).json({ message: 'Email and location are required' });
+          }
+
+        const weatherData=await getWeatherData(location);
+        console.log('Fetched Weather Data:', weatherData);
+        const user = new User({
+            email, 
+            location,
+             weatherData,
+            });
+
         await user.save();
         res.status(201).send(user);
     }catch(error){
@@ -12,5 +25,6 @@ export const createUser = async (req, res) => {
         res.status(500).json({message: 'Error while creating user', error: error.message})
     }
 
-    
+
 }
+module.exports = {createUser};

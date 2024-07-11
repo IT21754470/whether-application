@@ -1,22 +1,22 @@
-import mongoose from 'mongoose'
+// src/models/user.model.js
+const mongoose = require('mongoose');
 
-const userShema=new mongoose.Schema({
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  weatherData: {
+    type: Object, // Ensure this is Object and not String
+    required: true,
+  }
+});
 
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    location:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    whetherData:{
-        type:String,
-        required:true,
-    }
+const User = mongoose.model('User', userSchema);
 
-
-})
-const User=mongoose.model('User',userSchema)
+module.exports = User;
