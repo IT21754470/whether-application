@@ -1,4 +1,3 @@
-// src/models/user.model.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -12,7 +11,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   weatherData: {
-    type: Object, // Ensure this is Object and not String
+    type: Object, 
     required: true,
   }
 });

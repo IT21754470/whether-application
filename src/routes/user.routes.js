@@ -1,6 +1,6 @@
 
 
-const express = require('express');  // Import express
+const express = require('express'); 
 const { createUser,getWeatherData1,updateWeatherData } = require('../controllers/user.controller');
 
 const router=express.Router();
