@@ -18,7 +18,11 @@ Mongoose: ODM library for MongoDB to manage data and schemas.
 OpenWeatherMap API: External API to fetch weather data.
 Postman: Tool for testing API routes (Postman Collection provided).
 
+install dependencies
+npm install
 
+run the application
+node src/server.js
 
 
 
